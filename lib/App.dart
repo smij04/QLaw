@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/first_start.dart';
-
-
-const LocationsRoute = '/';
+import 'generate_routes.dart';
 
 
 class App extends StatelessWidget {
@@ -10,34 +7,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      onGenerateRoute: _routes(),     
-      theme: _theme(),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,   
     );
   }
-
-
-  RouteFactory _routes() {
-    return (settings) {
-      final Map<String, dynamic> arguments = settings.arguments;
-      Widget screen;
-      switch (settings.name) {
-        case LocationsRoute:
-          screen = FirstStart();
-          break;
-
-        default:
-          return null;
-      }
-
-      return MaterialPageRoute(builder: (BuildContext context) => screen);
-
-    };
-  }
-
-  ThemeData _theme() {
-
-  }
-
 }
 
 
